@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: pod-reader-binding
+  labels:
+    author: Tawfeeq
+
+subjects:
+  - kind: user
+    name: arun
+roleRef:
+  kind: Role
+  name: pod-reader
+
+
