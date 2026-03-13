@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 2048-deployment
+  labels:
+    name: 2048-dep
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: 2048-app
+  template:
+    metadata:
+      labels:
+        app: 2048-app
+    spec:
+      containers:
+        - name: 2048-app
+          image: tawfeeq421/2048
+          ports:
+            - containerPort: 3000

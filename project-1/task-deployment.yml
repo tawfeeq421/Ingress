@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadate:
+  name: task-Deployment
+  labels:
+    app: task
+spec:
+  replicas: 2
+  selecctor:
+    matchLabels:
+      name: task-app
+  template:
+    metadata:
+      labels:
+        name: task-app
+    spec:
+      containers:
+        - name: my-task
+          image: tawfeeq421/task
+          ports:
+            - containerPort: 3000
+
