@@ -5,12 +5,12 @@ metadata:
   labels:
     app: my-pv
 spec:
-  accessModes:
-    - ReadWriteOnce:
-  strogeClassName: Standard
   capacity:
     storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: standard
+  persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: folder
-
+    path: /home/thetak561/Ingress/volumes
 

@@ -1,21 +1,23 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: pod-pvc
+  name: volume-pod
   labels:
-    app: test
+    app: mysql-pod
 spec:
   containers:
-    - name: mysql
+    - name: mydb
       image: mysql
       env:
         - name: MYSQL_ROOT_PASSWORD
           value: admin123
+      ports:
+        - containerPort: 3306
       volumeMounts:
-        - name: mysql-volume
+        - name: myvolume
           mountPath: /var/lib/mysql
   volumes:
-    - name: mysql-volume
-      persistentVolumeClaim:
-        claimName: pvc-volume
+    - name: myvolume
+      emptyDir: {}
+
 
