@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  ClusterIP: None
+  ports:
+    - targetPort: 3306
+      port: 3306
+  selector:
+    app: mysql
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  replicas: 3
+  serviceName: mysql
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mydb
+          image: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: admin123
+          volumeMounts:
+            - name: mysql-volume
+              mountPth: /var/lib/mysql
+      volumes:
+        - name: mysal-volume
+          persistentVolumeClaim:
+            claimName: pvc-volume
+...
