@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: example.task.in
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: task-service
+                port:
+                  number: 3000
+    - host: turist.in
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: turist-service
+                port:
+                  number: 3000
+    - host: example.2048.in
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: service-20484
+                port:
+                  number: 3000 

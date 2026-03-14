@@ -8,11 +8,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: 2048-app
+      app: app-2048
   template:
     metadata:
       labels:
-        app: 2048-app
+        app: app-2048
     spec:
       containers:
         - name: 2048-app

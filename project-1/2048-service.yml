@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: 2048-service
+  name: service-20484
   labels:
-    name: 2048-app
+    name: app
 spec:
   type: ClusterIP
   selector:
-    app: 2048-app
+    app: app-2048
   ports:
     - targetPort: 3000
       port: 3000
