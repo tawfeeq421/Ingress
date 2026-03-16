@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mysql
 spec:
-  ClusterIP: None
+  clusterIP: None
   ports:
     - targetPort: 3306
       port: 3306
@@ -42,7 +42,7 @@ spec:
     - metadata:
         name: mysql-volume
       spec:
-        accessModes: ["readWriteOnce"]
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
             storage: 2Gi
